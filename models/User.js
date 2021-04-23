@@ -1,4 +1,6 @@
-const { Schema, model } = require('mongoose'),
+const { Schema, model } = require('mongoose');
+const dateFormat = require('../utils/dateFormat');
+
 
 const UserSchema = new Schema({
 
@@ -13,8 +15,10 @@ const UserSchema = new Schema({
         type: String,
         required: 'email is required',
         unique: true,
+
         match: [/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/, 'Please enter a valid email address' ]
     },
+
     // Array of _id values referencing the Thought model
     thoughts: [
         {
@@ -43,11 +47,11 @@ const UserSchema = new Schema({
 
 );
 
-// It creates a virtual called friendCount that retrieves the length of the user's friends array field on query.
-UserSchema.virtual('userCount').get(function() {
-    return this.user.length;
+// Get total count of comments and replies on retrieval
+UserSchema.virtual('friendCount').get(function() {
+    return this.friends.length;
 });
-
+//creates User model using Schema
 const User = model('User', UserSchema);
 
 module.exports = User;
