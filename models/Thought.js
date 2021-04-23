@@ -2,7 +2,7 @@ const { Schema, model, Types } = require('mongoose');
 const dateFormat = require('../utils/dateFormat');
 //const { schema } = require('./User');
 
-const ReactionSchema = new Schema (
+const ReactionSchema = new Schema(
     {   // ser custom id to avoid confusion with parent comment _id
         reactionId: {
             type: Schema.Types.ObjectId,
@@ -11,7 +11,7 @@ const ReactionSchema = new Schema (
 
         reactionBody: {
             type: String,
-            required:  'Reaction is Required',
+            required: 'Reaction is Required',
             minlength: 1,
             maxlength: 280
         },
@@ -36,7 +36,7 @@ const ReactionSchema = new Schema (
 
 );
 
-const ThoughtSchema = new Schema (
+const ThoughtSchema = new Schema(
     {
         thoughtText: {
             type: String,
@@ -71,7 +71,7 @@ const ThoughtSchema = new Schema (
 );
 
 // get total count of friends on retrieval
-ThoughtSchema.virtual('replyCount').get(function() {
+ThoughtSchema.virtual('replyCount').get(function () {
     return this.replies.length;
 });
 

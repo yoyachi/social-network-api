@@ -16,7 +16,7 @@ const UserSchema = new Schema({
         required: 'email is required',
         unique: true,
 
-        match: [/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/, 'Please enter a valid email address' ]
+        match: [/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/, 'Please enter a valid email address']
     },
 
     // Array of _id values referencing the Thought model
@@ -36,19 +36,19 @@ const UserSchema = new Schema({
 
 },
 
-{
-    toJson: {
-        virtuals: true,
-        getters: true
-    },
-    // prevents virtuals from crating duplicated of _id as `id`
-    id: false
-}
+    {
+        toJson: {
+            virtuals: true,
+            getters: true
+        },
+        // prevents virtuals from crating duplicated of _id as `id`
+        id: false
+    }
 
 );
 
 // Get total count of comments and replies on retrieval
-UserSchema.virtual('friendCount').get(function() {
+UserSchema.virtual('friendCount').get(function () {
     return this.friends.length;
 });
 //creates User model using Schema
