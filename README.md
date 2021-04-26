@@ -36,4 +36,4 @@ In this walkthough video, I demostrate functionality of application inteacting w
 ## License
 
 MIT license
-
+![Bower](https://img.shields.io/bower/l/MI)
