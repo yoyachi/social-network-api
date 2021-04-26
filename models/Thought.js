@@ -40,9 +40,9 @@ const ThoughtSchema = new Schema(
     {
         thoughtText: {
             type: String,
-            required: 'Thought is Required'
-            minlength: 1,
-            maxlength: 280
+            required: 'Thought is Required',
+            minLength: 1,
+            maxLength: 280
         },
 
         createdAt: {
@@ -53,7 +53,7 @@ const ThoughtSchema = new Schema(
 
         userName: {
             type: String,
-            required: 'User name is Required'
+            required: 'User name is Required',
             //the user that created this thought
             ref: 'User'
         },
@@ -72,7 +72,7 @@ const ThoughtSchema = new Schema(
 
 // get total count of friends on retrieval
 ThoughtSchema.virtual('reactionCount').get(function () {
-    return this.reaction.length;
+    return this.reactions.length;
 });
 
 const Thought = model('Thought', ThoughtSchema);
